@@ -9,8 +9,6 @@
     let isPlayerOne = true
     let symbols = Array(9).fill("")
 
-    $: console.log(winningCondition)
-
     store.subscribe(values=>{
         winningCondition = values.winningCondition
         winner = values.winner

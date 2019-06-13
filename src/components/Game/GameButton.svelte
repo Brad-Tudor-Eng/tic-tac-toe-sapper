@@ -2,6 +2,7 @@
     export let symbol
     export let isWinner
     export let gameOver
+
 </script>
 
 <style>

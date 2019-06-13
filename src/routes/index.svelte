@@ -1,19 +1,15 @@
 <script>
-	import Header from '../components/Layout/Header.svelte'
-	import GameArea from '../components/Game/GameArea.svelte'
-	export let name;
-
 </script>
 
 <style>
-
 </style>
 
 <svelte:head>
 	<title>Svelte Tac-Toe!</title>
 </svelte:head>
 
-<Header><p slot="header-text">Title</p></Header>
-<main>
-	<GameArea />
-</main>
+<!--
+	TODO: Add Header with Login and Signup Button 
+	(Accounts are optional but required for game saving)
+	TODO: Add image and nav-button for Single Computer and newtwork games
+ -->

@@ -1,4 +1,5 @@
-import {get, writable } from 'svelte/store'
+import {writable } from 'svelte/store'
+import uuid from 'uuid/v4'
 import {includesAll} from './helper/includesAll'
 
 
@@ -54,12 +55,14 @@ const playerMove = (isPlayerOne, move) => {
 const checkForWinner = () => {
     //sets the game over condition
     store.update(storeValues=>{
-        let {playerOne, playerTwo, winner, winningCondition} = storeValues
+        let {playerOne, playerTwo, winner, winningCondition, history, moves} = storeValues
         for(let condition of winningConditions){
             if(includesAll(playerOne.score, condition)){ winner = "playerOne" }
             if(includesAll(playerTwo.score, condition)){ winner = "playerTwo" }
             if(winner){ 
                 winningCondition = [...condition] 
+                const newHistoryItem = {id: uuid(), winner, moves:[...moves]}
+                history = [...history, newHistoryItem]
                 return {...storeValues, winner, winningCondition}
             }
         }
@@ -68,7 +71,18 @@ const checkForWinner = () => {
 }
 
 const reset = () => {
-    store.set(INITIAL_STATE)
+        console.log("reset")
+    store.update(values=>{
+        const history = values.history
+        console.log(history)
+        return {...INITIAL_STATE, history}
+    })
+}
+
+const clearHistory = () => {
+    store.update(values=>{
+        return {...values, history:[]}
+    })
 }
 
 //TODO: add check for cat feature
@@ -76,5 +90,7 @@ const reset = () => {
 export default {
     subscribe: store.subscribe,
     playerMove,
-    checkForWinner
+    checkForWinner,
+    clearHistory,
+    reset
 }
