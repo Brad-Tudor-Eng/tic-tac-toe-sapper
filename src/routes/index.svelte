@@ -1,15 +1,30 @@
 <script>
+	import GameSelector from '../components/Layout/GameSelector.svelte'
 </script>
 
 <style>
+
+	div{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	p{
+		font-family: Acme;
+		font-size: 20vh;
+		color: black;
+	}
 </style>
 
 <svelte:head>
 	<title>Svelte Tac-Toe!</title>
 </svelte:head>
 
-<!--
-	TODO: Add Header with Login and Signup Button 
-	(Accounts are optional but required for game saving)
-	TODO: Add image and nav-button for Single Computer and newtwork games
- -->
+
+<div>
+	<GameSelector href="/SingleStart">Single</GameSelector>
+	    <p>OR</p>
+	<GameSelector href="/NetworkStart">Network</GameSelector>
+</div>

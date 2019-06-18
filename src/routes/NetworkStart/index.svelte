@@ -12,3 +12,8 @@
     if not, once the user enters their name; a session id will be
     created
  -->
+
+ <section>
+    <p>Network Start Game</p>
+    <a href="/Network">Network</a>
+ </section>
